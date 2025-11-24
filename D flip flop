@@ -1,0 +1,38 @@
+dff.v:
+module DFF(clk,rst,d,q,qb);
+    input d,clk,rst;
+    output q,qb;
+    reg q;
+    assign qb = ~q;
+    always@ (posedge(clk))
+    begin
+        if(rst)
+            q <= 1'b0;
+        else
+            q <= d;
+
+    end
+endmodule
+
+
+dff_tb.v:
+module DFF_tb;
+    reg d,clk,rst;
+    wire q,qb;
+    DFF DFF1 (clk,rst,d,q,qb);
+    initial begin
+        clk = 1'b0;
+        forever #1 clk = ~clk;
+    end
+    initial begin
+        rst = 1'b1; d = 1'b0; #10
+        rst = 1'b1; d = 1'b1; #10
+        rst = 1'b1; d = 1'b0; #10
+        rst = 1'b1; d = 1'b1; #10
+        rst = 1'b0; d = 1'b0; #10
+        rst = 1'b0; d = 1'b1; #10
+        rst = 1'b0; d = 1'b0; #10
+        rst = 1'b0; d = 1'b1; #10
+        $finish;
+    end
+endmodule
