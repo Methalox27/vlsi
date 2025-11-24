@@ -1,0 +1,20 @@
+Part A:
+
+csh
+source cshrc1
+cd cadence_ms_614
+virtuoso&
+
+
+
+
+Part B:
+
+csh
+source cshrc_digi
+cd counter_design_database_45nm
+cd simulation
+mkdir name
+cd name
+gedit andgate.v andgate_tb.v
+xrun - access +rwc andgate.v andgate_tb.v -gui
