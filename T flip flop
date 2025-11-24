@@ -1,0 +1,36 @@
+tff.v:
+module tff(clk,rst,t,q,qb);
+    input t,clk,rst;
+    output q,qb;
+    reg q;
+    assign qb = ~q;
+    always @(posedge(clk))
+    begin
+        if(rst)
+              q <= 1'b0;
+        else
+              if(t) q <= ~q;
+
+    end
+endmodule
+
+
+tff_tb.v:
+module tff_tb;
+    reg t,clk,rst;
+    wire q,qb;
+    tff u1 (clk, rst, t, q,qb);
+    initial begin
+            clk = 1'b0;
+            forever #1 clk = ~clk;
+    end
+    initial begin
+            rst = 1'b1; t=1'b0; #10
+            rst = 1'b1; t=1'b1; #10
+            rst = 1'b0; t=1'b0; #10
+            rst = 1'b0; t=1'b1; #10
+            rst = 1'b0; t=1'b0; #10
+            rst = 1'b0; t=1'b1; #10
+            $finish;
+    end
+endmodule
