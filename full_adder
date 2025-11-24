@@ -1,0 +1,30 @@
+FAA.v:
+module FAA (a,b,ci,s,co);
+    input a,b,ci;
+    output s,co;
+    wire vdd, gnd;
+    assign vdd = 1'b1;
+    assign gnd = 1'b0;
+    assign s = a^b^ci;
+    assign co = (a&b)|(b&ci)|(ci&a);
+endmodule
+
+
+
+FAA_tb.v:
+module FAA_tb;
+    reg a1,b1,ci1;
+    wire s1,co1;
+    FAA FA1 (a1,b1,ci1,s1,co1);
+    initial begin
+        a1=1'b0; b1=1'b0; ci1=1'b0; #2
+        a1=1'b0; b1=1'b0; ci1=1'b1; #2
+        a1=1'b0; b1=1'b1; ci1=1'b0; #2
+        a1=1'b0; b1=1'b1; ci1=1'b1; #2
+        a1=1'b1; b1=1'b0; ci1=1'b0; #2
+        a1=1'b1; b1=1'b0; ci1=1'b1; #2
+        a1=1'b1; b1=1'b1; ci1=1'b0; #2
+        a1=1'b1; b1=1'b1; ci1=1'b1; #2
+        $finish;
+    end
+endmodule
