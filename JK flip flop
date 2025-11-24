@@ -20,3 +20,29 @@ module JKFF (clk,rst,j,k,q,qb);
           end
     end
 endmodule
+
+
+
+
+jkff_tb.v:
+module JKFF_tb;
+        reg j,k,clk,rst;
+        wire q,qb;
+        JKFF jkff1(clk,rst,j,k,q,qb);
+        initial begin
+            clk = 1'b0;
+            forever #1 clk = ~clk;
+        end
+        initial begin
+                rst = 1'b1; j = 1'b0; k = 1'b0 ; #10
+                rst = 1'b0; j = 1'b0; k = 1'b1 ; #10
+                rst = 1'b0; j = 1'b1; k = 1'b0 ; #10
+                rst = 1'b1; j = 1'b1; k = 1'b1 ; #10
+                rst = 1'b0; j = 1'b0; k = 1'b0 ; #10
+                rst = 1'b1; j = 1'b0; k = 1'b1 ; #10
+                rst = 1'b1; j = 1'b1; k = 1'b0 ; #10
+                rst = 1'b0; j = 1'b1; k = 1'b1 ; #10
+                $finish;
+        end
+endmodule
+
