@@ -3,7 +3,7 @@ module syn_cntr (clk, rst, count);
     input clk, rst;
     output [3:0] count;
     reg [3:0] count;
-    always @(posedge clk)
+    always @(posedge(clk))
     begin
         if(!rst) /* considering active low reset */
                 count <= 4'b000;
