@@ -5,9 +5,6 @@ module asyn_cntr (clk, rst, count);
         wire high;
         assign high = 1'b1;
         jkff u1 (clk, rst, high, high, count[0]);
-        
-        50
-        
         jkff u2 (count[0], rst, high, high, count[1]);
         jkff u3 (count[1], rst, high, high, count[2]);
         jkff u4 (count[2], rst, high, high, count[3]);
