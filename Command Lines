@@ -17,4 +17,4 @@ cd simulation
 mkdir name
 cd name
 gedit andgate.v andgate_tb.v
-xrun - access +rwc andgate.v andgate_tb.v -gui
+xrun -access +rwc andgate.v andgate_tb.v -gui
