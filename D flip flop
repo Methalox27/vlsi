@@ -4,7 +4,7 @@ module DFF(clk,rst,d,q,qb);
     output q,qb;
     reg q;
     assign qb = ~q;
-    always@ (posedge(clk))
+    always @(posedge(clk))
     begin
         if(rst)
             q <= 1'b0;
